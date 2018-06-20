@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+       <record id="view_partner_form_inherit_woocom" model="ir.ui.view">
+            <field name="name">view.partner.form.inherit.woocom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='street']" position="before">
+                    <field name="to_be_exported" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='title']" position="before">
+                    <field name="woocom_customer" invisible="1"/>
+                    <field name="woocom_paswrd" attrs="{'invisible':[('woocom_customer','=',False)],'required':[('woocom_customer','!=',False)]}" password="True"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="woocom_id"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <record id="action_partner_woocom" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">['|',('to_be_exported', '=', True),('woocom_id', '!=', False),('customer','=',True)]</field>
+            <field name = "context">{'default_to_be_exported' : True,'default_customer' :True }</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+</data>     
+</odoo>
+
+

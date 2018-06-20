@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data  noupdate="1">
+        <record id="product_product_shipping" model="product.product">
+            <field name="name">Shipping and Handling</field>
+            <field name="standard_price">0.0</field>
+            <field name="list_price">2.0</field>
+            <field name="type">service</field>
+            <field name="description_sale">Shipping and Handling</field>
+        </record>
+
+        <record id="product_product_gift_wrapp" model="product.product">
+            <field name="name">Gift Wrapping</field>
+            <field name="standard_price">0.0</field>
+            <field name="list_price">2.0</field>
+            <field name="type">service</field>
+            <field name="description_sale">Gift Wrapping</field>
+        </record>
+
+        <record id="test_workflow1" model="import.order.workflow">
+            <field name="name">Basic Workflow</field>
+            <field name="picking_policy">direct</field>
+            <field name="invoice_policy">order</field>
+            <field name="validate_order">True</field>
+            <field name="complete_shipment">True</field>
+            <field name="create_invoice">True</field>
+            <field name="validate_invoice">True</field>
+            <field name="register_payment">True</field>
+        </record>
+
+        <record id="guest_customer_data" model="res.partner">
+            <field name="name">Guest</field>
+            <field name="company_type">person</field>
+            <field name="customer">True</field>
+        </record>
+
+        <!--route_warehouse0_mto-->
+        <!--<record id="route_warehouse_data" model='stock.location.route'>-->
+            <!--<field name="name">Make To Order</field>-->
+            <!--<field name="sequence">10</field>-->
+        <!--</record>-->
+        <!--&lt;!&ndash;warehouse0&ndash;&gt;-->
+        <!--<record id="warehouse_data" model="stock.warehouse">-->
+            <!--<field model="res.company" name="name" search="[]" use="name"/>-->
+            <!--<field name="partner_id" ref="base.main_partner"/>-->
+            <!--<field name="code">WH</field>-->
+        <!--</record>-->
+    </data>
+</odoo>

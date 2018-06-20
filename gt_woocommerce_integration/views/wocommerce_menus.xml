@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+        <menuitem id="menu_woocommerce_ecommerce" name="Woocommerce" groups="gt_woocommerce_integration.group_woocommerce_connector_users" />
+       
+        
+        <menuitem id="menu_instance_woocom" action="dashboard_woocommerce_instance_kanban" name="Dashboard" parent="menu_woocommerce_ecommerce" sequence="0"/>
+        <menuitem name="Sales" id="menu_sale_woocom" parent="menu_woocommerce_ecommerce" sequence="1"/>
+        <menuitem id="menu_customer_woocom" parent="menu_sale_woocom" action="action_partner_woocom" name="Customers" sequence="1"/>
+        <menuitem id="menu_product_woocom" parent="menu_sale_woocom" action="action_product_template_woocom" name="Product" sequence="2"/>
+        <menuitem id="menu_product_variant_woocom" parent="menu_sale_woocom" action="action_product_product_woocom" name="Product Variant" sequence="3"/>
+        <menuitem id="menu_quotation_woocom" action="action_quotation_woocom" parent="menu_sale_woocom" name="Quotation" sequence="4"/>
+        <menuitem id="menu_orders_woocom" action="action_orders_woocom" parent="menu_sale_woocom" name="Sale Orders" sequence="5"/>
+        
+        <menuitem name="Delivery" id="menu_delivery_woocom" parent="menu_woocommerce_ecommerce" sequence="5"/>
+        <menuitem name="Delivery methods" action ="action_delivery_carrier_form_woocom" id="submenu_delivery_woocom" parent="menu_delivery_woocom" />
+        <menuitem name="All Delivery Orders" action="inherit_action_picking_tree_all" id="all_delivery_woocom_menu" parent="menu_delivery_woocom" sequence="1"/>
+        <menuitem name="Payment Method" action="action_payment_gatway_woocom" id="payment_method_woocom_menu" parent="menu_delivery_woocom" sequence="2"/>
+       
+        <menuitem name="Woocommerce Attribute" id="menu_attribute_label_woocom" parent="menu_woocommerce_ecommerce" sequence="70"/>
+        <menuitem id="menu_attribute_woocom" parent="menu_attribute_label_woocom" action="action_product_attribute_woocom" name="Attribute" sequence="1"/>
+        <menuitem id="menu_attribute_value_woocom" parent="menu_attribute_label_woocom" action="action_product_attribute_value_woocom" name="Attribute Value" sequence="2"/>
+        
+        <menuitem name="Woocommerce Category" id="menu_woocommerce_Category_label_woocom" parent="menu_woocommerce_ecommerce" sequence="80"/>
+        <!-- <menuitem id="menu_category_woocom" parent="menu_woocommerce_Category_label_woocom" action="action_product_category_woocom" name="Categories" sequence="1"/> -->
+        <menuitem id="menu_woocom_category_woocom" parent="menu_woocommerce_Category_label_woocom" action="action_woocom_category" name="Categories" sequence="1"/>
+        
+        
+        <menuitem id="menu_woocommerce_analysis" name="Sales Analysis" parent="menu_woocommerce_ecommerce"  sequence="81"/>
+        <menuitem id="menu_woocommerce_analysis_id" name="Analysis" parent="menu_woocommerce_analysis" action='action_woocommerce_sales_analysis' />
+       
+        <menuitem name="Woocommerce Log" id="menu_woocommerce_log_label_woocom" parent="menu_woocommerce_ecommerce" sequence="90"/>
+        <menuitem id="menu_log_history_woocom" parent="menu_woocommerce_log_label_woocom" action="action_all_woocommerce_log" name="Woocommerce Log History" sequence="1"/>
+        
+        <menuitem name="Configuration" id="menu_configuration" parent="menu_woocommerce_ecommerce" sequence="100"/>
+        <menuitem id="menu_woocommerce_instance_submenu" parent="menu_configuration" action="action_woocommerce_instance" name="Woocommerce Instances" sequence="1"/>
+        <menuitem id="menu_shop_submenu" parent="menu_configuration" action="action_woocommerce_shop" name="Shops" sequence="2"/>
+		<menuitem id="menu_workflow_submenu" parent="menu_configuration" action="action_import_order_workflow" name="Workflows" sequence="3"/>
+</data>
+</odoo>

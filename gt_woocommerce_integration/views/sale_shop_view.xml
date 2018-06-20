@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_woocommerce_shop_form">
+			<field name="name">view.woocommerce.shop.form</field>
+			<field name="model">sale.shop</field>
+			<field name="arch" type="xml">
+				<form string="Woocommerce Instance">
+					<sheet>
+						<label for="name" class="oe_edit_only" />
+						<h1>
+							<field name="name" />
+						</h1>
+
+						<group name="wocommerce_info">
+							<group name="wocommerce_information">
+								<label for="id" string="Wocommerce Information" />
+								<div name="woocommerce_infor_div">
+									<div name="amazon_instance_id">
+										<label for="woocommerce_instance_id" string="Wocommerce Instance ID"
+											   style="font-weight: bold;" />
+										<field name="woocommerce_instance_id" class="oe_inline"
+											   attrs="{'readonly': [('woocommerce_instance_id', '!=', False)]}" />
+									</div>
+									<!-- <div name="woocommerce ID">
+										<label for="woocommerce_id" string="woocommerce ID" style="font-weight: bold;" />
+										<field name="woocommerce_id" class="oe_inline" readonly="1" />
+									</div> -->
+								</div>
+							</group>
+						</group>
+						<separator string="Configuration" />
+						<group name="product_information">
+							<label for="id" string="Products" />
+							<div name="product_information_div">
+								<div name="product_import_condition">
+									<label for="product_import_condition"
+										   string="Create New Product if Product not in System while import order"
+										   style="font-weight: bold;" />
+									<field name="product_import_condition" class="oe_inline" />
+
+								</div>
+								<!-- <div name="route_ids">
+									<label for="route_ids" string="Routes" style="font-weight: bold;" />
+									<field name="route_ids" required="True" widget="many2many_checkboxes"
+										   class="oe_inline" />
+								</div> -->
+								<div name="shipment_fee_product_id">
+									<label for="shipment_fee_product_id" string="Shipment Fee"
+										   style="font-weight: bold;" />
+									<field name="shipment_fee_product_id" required="True"
+										   class="oe_inline" />
+								</div>
+								<div name="gift_wrapper_fee_product_id">
+									<label for="gift_wrapper_fee_product_id" string="Gift Wrapper Fee"
+										   style="font-weight: bold;" />
+									<field name="gift_wrapper_fee_product_id" required="True"
+										   class="oe_inline" />
+								</div>
+							</div>
+						</group>
+						<group name="stock_information">
+							<label for="id" string="Stock Configuration" />
+							<div name="stock_configuration_div">
+								<div name="on_fly_update_stock">
+									<label for="on_fly_update_stock"
+										   string="Update on Shop at time of Odoo Inventory Change"
+										   style="font-weight: bold;" />
+									<field name="on_fly_update_stock" class="oe_inline" />
+								</div>
+								<div name="warehouse_id">
+									<label for="warehouse_id" string="Warehouse" style="font-weight: bold;" />
+									<field name="warehouse_id" required="True" class="oe_inline"/>
+								</div>
+							</div>
+						</group>
+						<!-- groups="stock.group_stock_multi_warehouses" -->
+						<group name="order_configuration">
+							<label for="id" string="Order Configuration" />
+							<div name="prefix">
+								<div name="prefix">
+									<label for="prefix" string="Prefix" style="font-weight: bold;" />
+									<field name="prefix" required="True" class="oe_inline" />
+								</div>
+								<div name="suffix">
+									<label for="suffix" string="Suffix" style="font-weight: bold;" />
+									<field name="suffix" class="oe_inline" />
+								</div>
+								<div name="partner_id">
+									<label for="partner_id" string="Default Customer(Guest Customer)"
+										   style="font-weight: bold;" />
+									<field name="partner_id" required="True" class="oe_inline" />
+								</div>
+								<div name="company_id">
+									<label for="company_id" string="Company" style="font-weight: bold;" />
+									<field name="company_id" required="True" class="oe_inline" />
+								</div>
+								<div name="pricelist_id">
+									<label for="pricelist_id" string="Pricelist ID" style="font-weight: bold;" />
+									<field name="pricelist_id" required="True" class="oe_inline" />
+								</div>
+								<div name="sale_journal">
+									<label for="sale_journal" string="Sale Journal" style="font-weight: bold;" />
+									<field name="sale_journal" required="True" class="oe_inline" />
+								</div>
+								<div name="workflow_id">
+									<label for="workflow_id" string="Order Workflow" style="font-weight: bold;" />
+									<field name="workflow_id" class="oe_inline" option="{'no_edit': True}" />
+								</div>
+								<div name="on_fly_update_order_status">
+									<label for="on_fly_update_order_status"
+										   string="Update on Shop at time of Odoo Order Status Change"
+										   style="font-weight: bold;" />
+									<field name="on_fly_update_stock" class="oe_inline" />
+								</div>
+							</div>
+						</group>
+						<group name="schedular_configuration">
+							<label for="id" string="Schedular Configuration" />
+							<div name="schedular_configuration_div">
+								<div name="auto_import_order">
+									<label for="auto_import_order" string="Auto Import Order"
+										   style="font-weight: bold;" />
+									<field name="auto_import_order" class="oe_inline" />
+								</div>
+								<div name="auto_import_products">
+									<label for="auto_import_products" string="Auto Import Products"
+										   style="font-weight: bold;" />
+									<field name="auto_import_products" class="oe_inline" />
+								</div>
+								<div name="auto_update_inventory">
+									<label for="auto_update_inventory" string="Auto Update Inventory"
+										   style="font-weight: bold;" />
+									<field name="auto_update_inventory" class="oe_inline" />
+								</div>
+								<div name="auto_import_order">
+									<label for="auto_update_order_status" string="Auto Update Order Status"
+										   style="font-weight: bold;" />
+									<field name="auto_update_order_status" class="oe_inline" />
+								</div>
+								<div name="auto_update_product_data">
+									<label for="auto_update_product_data" string="Auto Update Product data"
+										   style="font-weight: bold;" />
+									<field name="auto_update_product_data" class="oe_inline" />
+								</div>
+							</div>
+						</group>
+						<notebook>
+							<page string="Woocommerce Information">
+								<group>
+									<group>
+										<field name="last_woocommerce_product_attrs_import_date"/>
+										<field name="last_woocommerce_product_import_date"/>
+										<field name="last_woocommerce_inventory_import_date"/>
+										<field name="last_woocommerce_order_import_date"/>
+										<field name="last_woocommerce_msg_import_date"/>
+									</group>
+								</group>
+							</page>
+							<page string="Initial Synchronization">
+								<group col="12">
+										<button name="importWoocomAttribute" string="Import Product Attribute" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWooCategory" string="Import Category" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWoocomProduct" string="Import Product" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWoocomInventory" string="Import Inventory" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWoocomCustomer" string="Import Customer" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWoocomCarrier" string="Import Carrier" type="object" class="oe_highlight" colspan="2"/>
+										<button name="importWoocomOrder" string="Import Order" type="object" class="oe_highlight" colspan="2"/>
+								</group>
+							</page>
+							
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_woocommerce_shop_tree">
+			<field name="name">view.woocommerce.shop.tree</field>
+			<field name="model">sale.shop</field>
+			<field name="arch" type="xml">
+				<tree string="Woocommerce Instance">
+					<field name="name"/>
+					<field name="code" />
+					<field name="warehouse_id" required="True"/>
+					<field name="company_id"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="action_woocommerce_shop" model="ir.actions.act_window">
+			<field name="name">Woocommerce Shops</field>
+			<field name="res_model">sale.shop</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'default_woocommerce_shop':True}</field>
+			<field name="domain">[('woocommerce_shop','=',True)]</field>
+		</record>
+		
+		<record model="ir.actions.act_window.view" id="action_woocommerce_shop_tree_view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_woocommerce_shop_tree"/>
+            <field name="act_window_id" ref="action_woocommerce_shop"/>
+        </record>
+		
+		 <record model="ir.actions.act_window.view" id="action_woocommerce_shop_form_view">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_woocommerce_shop_form"/>
+            <field name="act_window_id" ref="action_woocommerce_shop"/>
+        </record>
+	</data>
+</odoo>
+
+

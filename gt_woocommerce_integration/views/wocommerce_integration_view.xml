@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	<record model="ir.ui.view" id="view_woocommerce_instance_tree">
+		<field name="name">view.woocommerce.instance.tree</field>
+		<field name="model">woocommerce.instance</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="Woocommerce Instance">
+				<field name="name" />
+				<field name="location" colspan="4" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_woocommerce_instance_form" model="ir.ui.view">
+		<field name="name">view.woocommerce.instance.form</field>
+		<field name="type">form</field>
+		<field name="model">woocommerce.instance</field>
+		<field name="arch" type="xml">
+			<form string="Woocommerce Instance">
+				<header>
+					<button name="check_connection" string="Check Connection" type="object" class="oe_highlight" states="draft"/>
+					<button name="create_shop" string="Create shop" type="object" class="oe_highlight" states="connected"/>
+					<field name="state" widget="statusbar" statusbar_visible="draft,connected"/>
+				</header>
+				<sheet>
+					<group colspan="3">
+						<h1>
+							<field name="name" colspan="4" select="1" required="True" />
+						</h1>
+					</group>
+					<notebook colspan="4">
+						<page string="Authentication">
+							<separator string="Account Credentials" />
+							<group>
+								<field name="location" required="1"/>
+								<field name="consumer_key" required="1"/>
+								<field name="secret_key" required="1"/>
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="action_woocommerce_instance">
+		<field name="name">Woocommerce Instances</field>
+		<field name="res_model">woocommerce.instance</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+</data>
+</odoo>

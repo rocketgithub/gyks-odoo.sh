@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	<record id="view_import_woocommerce_connector_wizard_form_view" model="ir.ui.view">
+		<field name="name">view.import.woocommerce.connector.wizard.form.view</field>
+		<field name="model">woocommerce.connector.wizard</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Import">
+				<group name="shops" string="Shops">
+					<field name="shop_ids" domain="[('woocommerce_shop', '=', True)]" widget="many2many_tags" options="{'no_create': True, 'no_edit': True, 'no_open': True}"/>
+				</group>
+				<group name="operations">
+					<group name="import" string="Import" invisible="context.get('from_export', False) or context.get('from_update', False)">
+						<field name="import_attribute" />
+						<label for="import_attribute" string="(Please Import just the attributes first in start)"></label>
+						<newline/>
+						<field name="import_category"/>
+						<field name="import_customer"/>
+						<field name="import_woocom_product"/>
+						<field name="import_inventory"/>
+						<field name="import_carrier"/>
+						<field name="import_payment" />
+						<field name="import_order" />
+						<field name="last_order_import_date" attrs ="{'invisible': [('import_order','!=',True)],'readonly': [('import_order','!=',True)] }" />
+					</group>
+					<group name="update" string="Update" invisible="context.get('from_import', False) or context.get('from_export', False)">
+						<field name="update_categories"/>
+						<field name="update_product_data" />
+						<label for="update_product_data" string="(Includes Updation of Products,Images and Variants)"></label>
+						<newline/>
+						<field name="update_woocom_product_inventory" />
+						<field name="update_order_status"/>
+					</group>
+
+					<group name="export" string="Export" invisible="not context.get('from_export', False)">
+						<field name="export_woocom_customers"/>
+						<field name="export_woocom_categories"/>
+						<field name="export_woocom_products"/>
+						<field name="export_woocom_orders"/>
+					</group>
+				</group>
+				<footer>
+					<button string="Run" name="import_woocommerce" type="object" class="btn-primary"/>
+					<button string="Cancel" class="btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_amazon_operation" model="ir.actions.act_window">
+		<field name="name">Woocommerce Operation</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">woocommerce.connector.wizard</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_import_woocommerce_connector_wizard_form_view"/>
+		<field name="target">new</field>
+	</record>
+	</data>
+</odoo>

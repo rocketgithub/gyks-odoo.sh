@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="gt_woocommerce_integration.group_woocommerce_connector_users" model="res.groups">
+            <field name="name">Woocommerce Connector Users</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,34 @@
+<openerp>		
+	<data>	
+		<record model="ir.ui.view" id="view_export_product_wiz_form">
+		<field name="name">view.export.product.wiz.form</field>
+		<field name="model">export.product.wiz</field>
+		<field name="arch" type="xml">
+			<form>
+			<group>
+			<field name="select_instance"/>
+			<field name="shop_ids"/>
+			</group>
+				<footer>
+					<button string='Export Product' name="export_to_woocom" type="object"
+						class="btn-primary" />
+					<button string="Cancel" class="btn-default" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	
+	<act_window
+            id="action_export_product_wiz"
+            name="Export Woocom Product"
+            res_model="export.product.wiz"
+            src_model="product.template"
+            view_mode="form"
+            multi="True"
+            target="new"
+            key2="client_action_multi"
+        />
+	
+	</data>
+</openerp>

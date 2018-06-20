@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+	<record id="view_payment_woocom_tree" model="ir.ui.view">
+		<field name="name">view.payment.woocom.tree</field>
+		<field name="model">payment.gatway</field>
+		<field name="arch" type="xml">
+		<tree>
+			<field name="title"/>
+		</tree>
+		</field>
+		
+	</record>
+	
+	<record id="view_payment_gatway_woocom_form" model="ir.ui.view">
+		<field name="name">view.payment.gatway.woocom.form</field>
+		<field name="model">payment.gatway</field>
+		<field name="arch" type="xml">
+		<form>
+		<sheet>
+		<group>
+			<field name="woocom_id"/>
+			<field name="title"/>
+			<field name="descrp"/>
+		</group>
+		</sheet>
+		</form>
+		</field>
+		
+	</record>
+
+    <record id="action_payment_gatway_woocom" model="ir.actions.act_window">
+       <field name="name">Payment Methods</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">payment.gatway</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,form</field>
+   </record>
+</data>
+</odoo>

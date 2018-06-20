@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_woocommerce_log_form" model="ir.ui.view">
+            <field name="name">view.woocommerce.log.form</field>
+            <field name="model">woocommerce.log</field>
+            <field name="arch" type="xml">
+                <form string="Woocommerce Logs">
+                    <sheet>
+                        <group>
+                            <field name="log_name"/>
+                            <field name="log_date"/>
+                            <!--<field name="import_operations"/>-->
+                            <!--<field name="update_operations"/>-->
+                            <!--<field name="export_operations"/>-->
+                            <field name="all_operations"/>
+                            <field name="error_lines">
+                            	<tree editable="bottom">
+                            		<field name="log_description" />
+                            	</tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_woocommerce_log_tree" model="ir.ui.view">
+            <field name="name">view.woocommerce.log.tree</field>
+            <field name="model">woocommerce.log</field>
+            <field name="arch" type="xml">
+                <tree string="Woocommerce Logs">
+                	<field name="log_date"/>
+                    <field name="log_name"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="woocom_log_error_form_view" model="ir.ui.view">
+            <field name="name">woocom.log.error.form.view</field>
+            <field name="model">log.error</field>
+            <field name="arch" type="xml">
+                <form string="Woocom Logs">
+                    <sheet>
+                        <group>
+                            <field name="log_description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_all_woocommerce_log" model="ir.actions.act_window">
+            <field name="name">Woocommerce logs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">woocommerce.log</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="view_type">form</field>-->
+            <!--<field name="view_id" ref="prestashop_log_form_view"/>-->
+        </record>
+
+    </data>
+</odoo>
