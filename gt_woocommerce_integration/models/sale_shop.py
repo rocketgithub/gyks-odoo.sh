@@ -340,7 +340,7 @@ class SaleShop(models.Model):
             if att_id:
                 value_ids=[]
                 option = []
-                if attrdict.has_key('options'):
+                if 'options' in attrdict:
                     option = attrdict.get('options')
                 elif attrdict.get('option'):
                     option = attrdict.get('option')
