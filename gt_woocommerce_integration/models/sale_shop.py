@@ -340,7 +340,7 @@ class SaleShop(models.Model):
             if att_id:
                 value_ids=[]
                 option = []
-                if 'options' in attrdict:
+                if attrdict.has_key('options'):
                     option = attrdict.get('options')
                 elif attrdict.get('option'):
                     option = attrdict.get('option')
@@ -464,7 +464,7 @@ class SaleShop(models.Model):
     @api.multi
     def importWoocomInventory(self):
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             products = wcapi.get("products")
             if products.status_code != 200:
                 raise UserError(_("Enter Valid url"))
@@ -615,7 +615,7 @@ class SaleShop(models.Model):
     def importWoocomCustomer(self):
         
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             count = 1
             customers = wcapi.get("customers?page="+ str(count))
             if customers.status_code != 200:
@@ -694,7 +694,7 @@ class SaleShop(models.Model):
     def importWooPaymentMethod(self):
         
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             payment_methods = wcapi.get("payment_gateways")
             if payment_methods.status_code != 200:
                 raise UserError(_("Enter Valid url"))
@@ -1034,7 +1034,7 @@ class SaleShop(models.Model):
     @api.multi
     def importWoocomOrder(self):
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             count = 1
             if self.env.context.get('last_woocommerce_order_import_date'):
                 method = "orders?filter[created_at_min]="+ self.env.context.get('last_woocommerce_order_import_date')
@@ -1061,7 +1061,7 @@ class SaleShop(models.Model):
     def updateWoocomCategory(self):
         categ_obj = self.env['woocom.category']
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             if shop.woocommerce_last_update_category_date:
                 categ_ids = categ_obj.search([('write_date','>', shop.woocommerce_last_update_category_date),('woocom_id','!=',False)])
             else:
@@ -1090,7 +1090,7 @@ class SaleShop(models.Model):
         stock_quanty = self.env['stock.quant']
 
         for shop in self:
-            wcapi = API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
+            wcapi = woocom_api.API(url=shop.woocommerce_instance_id.location, consumer_key=shop.woocommerce_instance_id.consumer_key, consumer_secret=shop.woocommerce_instance_id.secret_key,wp_api=True, version='wc/v2')
             if shop.woocommerce_last_update_product_data_date:
                 product_data_ids = prod_templ_obj.search([('write_date', '>',shop.woocommerce_last_update_product_data_date),('woocom_id', '!=', False)])
             else:

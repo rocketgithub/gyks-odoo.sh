@@ -44,11 +44,9 @@ odoo woocommerce connector
 odoo woo commerce connector
 odoo woocommerce integration 
 odoo woo commerce integration
-oodo shopify connector
-oodo shopify integration
 """,
     'summary': 'Odoo woocommerce which you can manage all your operations in Odoo',
-    "price": "249.00",
+    "price": "239.00",
     "currency": "EUR",
     'website': 'http://www.globalteckz.com',
     "license" : "Other proprietary",
