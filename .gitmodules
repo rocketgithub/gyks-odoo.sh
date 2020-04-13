@@ -2,3 +2,7 @@
 	path = fel_infile
 	url = git@github.com:rocketgithub/fel_infile.git
 	branch = master
+[submodule "l10n_gt_extra"]
+	path = l10n_gt_extra
+	url = git@github.com:rocketgithub/l10n_gt_extra.git
+	branch = 11.0
