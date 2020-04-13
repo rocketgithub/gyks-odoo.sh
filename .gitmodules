@@ -1,0 +1,4 @@
+[submodule "fel_infile"]
+	path = fel_infile
+	url = git@github.com:rocketgithub/fel_infile.git
+	branch = master
