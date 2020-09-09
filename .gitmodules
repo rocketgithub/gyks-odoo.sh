@@ -9,3 +9,11 @@
 [submodule "fel_gt"]
 	path = fel_gt
 	url = git@github.com:rocketgithub/fel_gt.git
+[submodule "pos_gt"]
+	path = pos_gt
+	url = git@github.com:rocketgithub/pos_gt.git
+	branch = 11.0_sin_mrp
+[submodule "pos_gface"]
+	path = pos_gface
+	url = git@github.com:rocketgithub/pos_gface.git
+	branch = 11.0_fel
